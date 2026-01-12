@@ -4,3 +4,4 @@ class Endpoints:
     CREATE_USER = '/api/auth/register'
     AUTH = '/api/auth/login'
     DELETE_USER = '/api/auth/user'
+    INGREDIENTS = '/api/ingredients'

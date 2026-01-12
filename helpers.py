@@ -7,16 +7,21 @@ from endpoints import Endpoints
 
 
 @allure.step('{title}')
-def send_post_request(url, data, title):
-    return requests.post(url, data)
+def send_post_request(url, data, title, token=None ):
+    response = None
+    if token:
+        headers = {
+            'Authorization': token
+        }
+        response = requests.post(url, data, headers=headers)
+    else:
+        response = requests.post(url, data)
+
+    return response
 
 @allure.step('{title}')
 def send_get_request(url, title):
     return requests.get(url)
-
-@allure.step('{title}')
-def send_put_request(url, data, title):
-    return requests.put(url, data)
 
 @allure.step('Удаляем пользователя с почтой {email}')
 def delete_user(user_data, email):
@@ -33,7 +38,7 @@ def register_new_user(payload):
 
     if response.status_code == 200:
         credentials = response.json()
-        data['accessToken'] = credentials['accessToken']
+        data['accessToken'] = credentials.get('accessToken')
     
     data['email'] = payload['email']
     data['name'] = payload['name']
