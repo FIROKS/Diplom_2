@@ -23,7 +23,7 @@ class TestCreateUser:
         delete_user_after_test.append(new_user_data)
         delete_user_after_test.append(existing_user)
         
-        assert existing_user['response'].status_code == 403 and existing_user['response'].json()['message'] == EXISTING_USER_MESSAGE
+        assert existing_user['response'].status_code == 403 and existing_user['response'].json().get('message') == EXISTING_USER_MESSAGE
 
     @allure.title('Попытка создать пользователя с пустым обязательным полем')
     @pytest.mark.parametrize(
@@ -38,4 +38,4 @@ class TestCreateUser:
         new_user_data = register_new_user(user_data)
         delete_user_after_test.append(new_user_data)
 
-        assert new_user_data['response'].status_code == 403 and new_user_data['response'].json()['message'] == REQUIRED_FIELDS_MESSAGE
+        assert new_user_data['response'].status_code == 403 and new_user_data['response'].json().get('message') == REQUIRED_FIELDS_MESSAGE
