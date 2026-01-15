@@ -1,0 +1,2 @@
+[32mINFO    [0m root:conftest.py:19 Удален пользователь с email: rhgillktvh@mail.ru
+[33mWARNING [0m root:conftest.py:21 Ошибка удаления пользователя с email: rhgillktvh@mail.ru: 'accessToken'

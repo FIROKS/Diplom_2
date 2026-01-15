@@ -6,7 +6,7 @@ import requests
 from endpoints import Endpoints
 
 
-@allure.step('{title}')
+@allure.step('Отправляем POST запрос - {title}')
 def send_post_request(url, data, title, token=None ):
     response = None
     if token:
@@ -19,7 +19,7 @@ def send_post_request(url, data, title, token=None ):
 
     return response
 
-@allure.step('{title}')
+@allure.step('Отправляем GET запрос - {title}')
 def send_get_request(url, title):
     return requests.get(url)
 

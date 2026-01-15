@@ -1,0 +1,1 @@
+INFO:root:Удален пользователь с email: nhsngubzna@mail.ru

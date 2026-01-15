@@ -1,2 +1,0 @@
-Удален пользователь с email: vwziocfvnf@mail.ru
-Ошибка удаления пользователя с email: vwziocfvnf@mail.ru: 'accessToken'

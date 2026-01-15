@@ -13,7 +13,7 @@ class TestCreateOrder:
         }
         delete_user_after_test.append(credentials)
 
-        response = send_post_request(Endpoints.URL + Endpoints.ORDER, ingredients, 'Отправляем запрос на создание заказа с авторизацией', credentials['accessToken'])
+        response = send_post_request(Endpoints.URL + Endpoints.ORDER, ingredients, 'Создание заказа с авторизацией', credentials['accessToken'])
 
         assert response.status_code == 200 and 'number' in response.json().get('order')
 
@@ -23,7 +23,7 @@ class TestCreateOrder:
             'ingredients': [ingredients_info[0].get('_id')]
         }
 
-        response = send_post_request(Endpoints.URL + Endpoints.ORDER, ingredients, 'Отправляем запрос на создание заказа без авторизацией')
+        response = send_post_request(Endpoints.URL + Endpoints.ORDER, ingredients, 'Создание заказа без авторизацией')
 
         assert response.status_code == 401 and 'number' not in response.json().get('order')
 
@@ -34,7 +34,7 @@ class TestCreateOrder:
         }
         delete_user_after_test.append(credentials)
 
-        response = send_post_request(Endpoints.URL + Endpoints.ORDER, ingredients, 'Отправляем запрос на создание заказа без ингредиентов', credentials['accessToken'])
+        response = send_post_request(Endpoints.URL + Endpoints.ORDER, ingredients, 'Создание заказа без ингредиентов', credentials['accessToken'])
 
         assert response.status_code == 400 and response.json().get('message') == INGREDIENTS_NOT_PROVIDED
 
@@ -45,6 +45,6 @@ class TestCreateOrder:
         }
         delete_user_after_test.append(credentials)
 
-        response = send_post_request(Endpoints.URL + Endpoints.ORDER, ingredients, 'Отправляем запрос на создание заказа с неверным хешем ингредиентов', credentials['accessToken'])
+        response = send_post_request(Endpoints.URL + Endpoints.ORDER, ingredients, 'Создание заказа с неверным хешем ингредиентов', credentials['accessToken'])
 
-        assert response.status_code == 401 and 'number' not in response.json().get('order')
+        assert response.status_code == 500

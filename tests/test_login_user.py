@@ -16,7 +16,7 @@ class TestLoginUser:
             'password': user_data['password'],
         }
 
-        response = send_post_request(Endpoints.URL + Endpoints.AUTH, login_data, 'Отправляем запрос на авторизацию')
+        response = send_post_request(Endpoints.URL + Endpoints.AUTH, login_data, 'Авторизация')
 
         assert response.status_code == 200 and 'accessToken' in response.json()
 
@@ -28,6 +28,6 @@ class TestLoginUser:
             'password': user_data['password'],
         }
 
-        response = send_post_request(Endpoints.URL + Endpoints.AUTH, login_data, 'Отправляем запрос на авторизацию')
+        response = send_post_request(Endpoints.URL + Endpoints.AUTH, login_data, 'Авторизация')
 
         assert response.status_code == 401 and response.json().get('message') == INCORRECT_EMAIL_OR_PASSWORD_MESSAGE

@@ -1,0 +1,2 @@
+INFO:root:Удален пользователь с email: rhgillktvh@mail.ru
+WARNING:root:Ошибка удаления пользователя с email: rhgillktvh@mail.ru: 'accessToken'
